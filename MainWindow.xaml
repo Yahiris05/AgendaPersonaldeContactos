@@ -1,0 +1,54 @@
+﻿<Window x:Class="AgendaContactos.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Agenda de Contactos" Height="450" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Formulario -->
+        <StackPanel Grid.Row="0" Margin="0,0,0,10">
+            <TextBlock Text="Nombre:" FontWeight="Bold"/>
+            <TextBox x:Name="txtNombre" Margin="0,0,0,5"/>
+
+            <TextBlock Text="Teléfono:" FontWeight="Bold"/>
+            <TextBox x:Name="txtTelefono" Margin="0,0,0,5"/>
+
+            <TextBlock Text="Email:" FontWeight="Bold"/>
+            <TextBox x:Name="txtEmail" Margin="0,0,0,10"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="Guardar Contacto" Click="BtnGuardar_Click" 
+                        Margin="0,0,10,0" Padding="10,2"/>
+                <Button Content="Eliminar Seleccionado" 
+                        Click="BtnEliminarSeleccionado_Click"
+                        Padding="10,2"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Lista de contactos -->
+        <DataGrid x:Name="dgContactos" Grid.Row="1" AutoGenerateColumns="False">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Eliminar" Click="MenuItemEliminar_Click"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="*"/>
+                <DataGridTextColumn Header="Teléfono" Binding="{Binding Telefono}" Width="120"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*"/>
+                <DataGridTemplateColumn Width="Auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Eliminar" Click="BtnEliminar_Click" 
+                                    Margin="2" Padding="5,2"
+                                    Tag="{Binding Id}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
