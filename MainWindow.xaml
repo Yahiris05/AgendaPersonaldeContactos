@@ -8,7 +8,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Formulario -->
+     
         <StackPanel Grid.Row="0" Margin="0,0,0,10">
             <TextBlock Text="Nombre:" FontWeight="Bold"/>
             <TextBox x:Name="txtNombre" Margin="0,0,0,5"/>
@@ -28,7 +28,7 @@
             </StackPanel>
         </StackPanel>
 
-        <!-- Lista de contactos -->
+        
         <DataGrid x:Name="dgContactos" Grid.Row="1" AutoGenerateColumns="False">
             <DataGrid.ContextMenu>
                 <ContextMenu>
